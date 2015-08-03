@@ -1,0 +1,298 @@
+<html>
+  <head>
+    <title>
+      Systec:FANCI database
+    </title>
+    <link rel="stylesheet" href="/mirna/database/style/systec.css">
+    <script type="text/javascript" src="/mirna/database/javascript/overlib.js"><!-- overLIB (c) Erik Bosrup --></script>
+    <script type="text/javascript" src="/mirna/database/javascript/tool_tip.js"></script>
+    <script type="text/javascript" src="/mirna/database/javascript/dynamic_file_upload.js"></script>
+    <script type="text/javascript" src="/mirna/database/javascript/id_type.js"></script>  
+    <script type="text/javascript" src="/mirna/database/javascript/prototype.js"></script>
+    <script type="text/javascript" src="/mirna/database/javascript/effects.js"></script>
+    <script type="text/javascript" src="/mirna/database/javascript/dragdrop.js"></script>
+    <script type="text/javascript" src="/mirna/database/javascript/controls.js"></script>
+<script type= "text/javascript" >
+function loadGeneSet() {
+    document.getElementById('text_area_ids').value = "PDGFRA\nKIT\n";
+    document.getElementById('org').value = "human";
+   
+
+}
+function loadMirSet() {
+    document.getElementById('text_area_ids').value = "hsa-miR-106b-5p\nhsa-miR-20a-5p\n";
+
+    document.getElementById('org').value = "human";
+    
+}
+</script>
+
+    <!--Insert1 from the cbdm BEGIN-->
+    <script type="text/javascript">
+
+$(function(){
+    $(".wmd-view-topscroll").scroll(function(){
+        $(".wmd-view")
+            .scrollLeft($(".wmd-view-topscroll").scrollLeft());
+    });
+    $(".wmd-view").scroll(function(){
+        $(".wmd-view-topscroll")
+            .scrollLeft($(".wmd-view").scrollLeft());
+    });
+});
+</script>
+
+
+    <script src="sorttable.js"></script>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" >
+    <link rel="stylesheet" type="text/css" href="uORF.css">
+    <!-- Insert1 from cbdm END-->
+
+    <!--Insert2 from cbdm google tracker BEGIN-->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-55247263-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+    <!--Insert2 from cbdm google tracker END-->
+  </head>
+
+
+
+  <body onload="fillCategory(1);">
+
+        <table border="0" cellpadding="4" width="800">
+      <tr>
+        <td colspan="2">
+          <table border="0" cellpadding="0" class="header" width="100%" bgcolor="#336633" >
+
+            <tr valign="middle" align="center">
+              <td width="110" rowspan="2"><img src="/mirna/images/systec_logo.jpg" height="82" width="83" alt="systec" title="systec" /></td>
+              <td colspan="6">
+  
+                                        <table  cellspacing="0" cellpadding="0" border="0">
+                                                <tr>
+                                                        <td class="banner_title">Systec: Integrated Data Portal for miRNA Target Prediction&nbsp;</td>  
+            </tr>
+            <tr>
+               <td class="banner_subtitle">&nbsp;&nbsp;</td>  
+                                                </tr>
+                                        </table>
+        </td>
+            </tr>
+            <tr valign="middle" align="center">
+              <td>
+                <div id="headlinks">
+                  <a href="home.html">Home</a>
+
+                </div>
+              </td>
+              <td>
+                <div id="headlinks">
+                  <a href="help.html">Help</a>
+                </div>
+              </td>
+              <td>
+
+                <div id="headlinks">
+                  <a href="index.html">Query</a>
+                </div>
+              </td>
+              <td>
+                <div id="headlinks">
+                  <a href="statistics.html">Statistics</a>
+                </div>
+
+              </td>
+              <td>
+                <div id="headlinks">
+                  <a href="links.html">Links</a>
+                </div>
+
+              </td>
+              <td>
+                <div id="headlinks">
+                  <a href="Contact.html">Contacts</a>
+                </div>
+              </td>
+            </tr>
+          </table>
+  <!--  
+    <div class="header">   
+    
+                <div align="right" class="linkbar">
+                 <a href="index.html">Home</a> / 
+                 <a href="query.html">Query</a> / 
+                 <a href="help.html">Help</a> /                            
+                 <a href="about.html">About</a> / 
+                 <a href="statistics.html">Statistics</a> /
+                 <a href="link.html">Links</a> / 
+                 <a href="contact.html">Contact</a>&nbsp;&nbsp;<a href="http://cbdm.mdc-berlin.de/"><img src="cbdm_logo.png" width="30" border=0></a><a href="https://www.mdc-berlin.de/"><img src="mdc.jpg" height="30"></a>
+                </div> 
+-->
+  <form method="POST" action="/cgi-bin/systec.cgi" enctype="multipart/form-data" name="Systec:FANCI">
+
+<!-- Cell START -->
+
+<table cellpadding="0" width="100%" cellspacing="0" border="0" class="cell" align="center">
+
+
+<tr><td align=left class="cellbanner">
+
+</td></tr>
+
+<tr><td class="cellbodyx">
+<!--<br>-->
+<!--
+  <small class="text_justify"><b>Simple search:</b></small>
+  <br><br>
+  <table> <tr><td>
+  <div><small class="text_justify"><b><i>Search  </i></b></small></td><td><small class="text_justify"><b><i><input name="search" id="search" maxlength="40" alt="Search" type="text" size="40"> in Systec:FANCI database <input type='submit' value='Find'/></i></b></small><span id="indicator1" style="display: none"></span></div>
+  <div id="search_update" style="display:none; border:1px solid black;background-color:white;"></div></td></tr>
+
+-->
+<script type="text/javascript" language="javascript" charset="utf-8">
+    // <![CDATA[
+      new Ajax.Autocompleter('search','search_update','/cgi-bin/systec_auto_select.cgi',{method:'get', minChars:1, frequency:0.1, indicator:'indicator1'}); <!-- , indicator:'indicator1' -->
+    // ]]>
+</script>
+<!--
+<tr><td></td><td>
+<small class="text_justify">examples: <a href="http://rschneider.embl.de/cgi-bin/systec.cgi?search=p53_human">p53_human</a>, <a href="http://rschneider.embl.de/cgi-bin/systec.cgi?search=nr1h2">nr1h2</a></small></td></tr>
+  </table>
+  <br><br>
+  <br><br>
+  <small class="text_justify_big"><b>Input :</b></small>
+  <br><br>
+-->
+  <table border=0 width='100%' bgcolor='#E0E0E0'>
+    <tr>
+                    <td><H4>1.Chose Input</H4><td>      
+    </tr>
+    <tr>
+      <td width='30%'><small class="text_justify"><b><i>Enter Identifiers </i></b></small></td>
+      <td><span  id='textbuffer' onchange='document.getElementByid("text_area_ids").value=this.innerHTML;'><textarea  name="text_area_ids" id="text_area_ids" cols=35 rows=12></textarea></span><br></td>
+    </tr>
+                <tr>
+                        <td  width="20%"><small class="text_justify"><b><i>Examples:</i></b></small></td>
+                        <td><input type="button"  name="loadgene" value="Load" onClick="loadGeneSet()">&nbsp;&nbsp;Example of Human Gene Set <!--(<a target='_blank' href='download.php?d=.&f=geneset.txt'>download</a>)-->
+                         <br>
+                         <input type="button" name="loadgene"value="Load" onClick="loadMirSet()">&nbsp;&nbsp;Example of Human miRNA Set <!--(<a target='_blank' href='download.php?d=.&f=mirna.txt'>download</a>)-->
+                         </td>
+                </tr>
+
+    <tr>
+      <td width='30%'><small class="text_justify"><b><i>Or upload a file </i></b></small></td>
+      <td><small class="text_justify"><b><i><input type="file" name="ids_file" id="ids_file"/></i></b></small></td>
+    </tr>
+<TR><td colspan='3'><H3></a></H3></td></TR>
+    <tr>
+                    <td><H4>2. Select Search Mode</H4><td>
+      
+    </tr>
+    <tr>
+      <td width='30%'><small class="text_justify"><b><i>Select identifier type </i></b></small></td>
+      <td><small class="text_justify">
+
+     <SELECT  id="Category1" NAME="Category1" onChange="SelectSubCatAll(this.id);"></SELECT>
+  
+    <tr>
+      <td width='30%'><small class="text_justify"><b><i>Select output type </i></b></small></td>
+      <td><small class="text_justify">
+      <SELECT id="SubCat1" NAME="SubCat1"></SELECT>
+    </small></td></tr>
+
+    <tr>
+      <td width='30%'><small class="text_justify"><b><i>Select a species</i></b></small></td>
+      <td><small class="text_justify">
+      <SELECT id="org" NAME="org">
+        <option value="0" selected="selected">[ Select a Species  ]</option>
+                <option value="human">Homo Sapiens</option>
+                <option value="mouse">Mus musculus</option>
+      </SELECT>
+    </small></td></tr>
+  </table>
+  </table>
+<TABLE BORDER=0 bgcolor='#E0E0E0' width='100%'>
+
+<TR><td colspan='3'><H3></a></H3></td></TR>
+<TR><td colspan='3'><H4></a>3. Select Databases</H4></td></TR>
+<TR VALIGN='TOP'>
+
+<TD WIDTH="40%">
+<TABLE  border='0' WIDTH="100%">
+    
+<TR><TD colspan="2"><B>Choose Prediction Tool</B></BR></TD></TR>
+<TR><TD ALIGN=center><input type="checkbox" name="toolselection" value="9606_pita_no_flank_TOP">   </TD><TD>PITA_TOP</TD></TR>
+<!--
+<TR><TD ALIGN=center><input type="checkbox" name="toolselection" value="1">   </TD><TD>PITA_ALL</TD></TR>
+<TR><TD ALIGN=center><input type="checkbox" name="toolselection" value="1">   </TD><TD>targetScan_Conserved</TD></TR>
+<TR><TD ALIGN=center><input type="checkbox" name="toolselection" value="1">   </TD><TD>targetScan_All</TD></TR>
+-->
+<TR><TD ALIGN=center><input type="checkbox" name="toolselection" value="9606_P_0.5_eimmo" ></TD><TD>EIMMO</TD></TR>
+<TR><TD ALIGN=center><input type="checkbox" name="toolselection" value="9606_TG0.7_CDS_microT"></TD><TD>Diana MicroT-CDS</TD></TR>
+<TR><TD ALIGN=center><input type="checkbox" name="toolselection" value="9606_spec_seed_targetspy"></TD><TD>TargetSpy</TD></TR>
+<TR><TD ALIGN=center><input type="checkbox" name="toolselection" value="9606_pictar_most_conserved"></TD><TD>Pictar_Conserved</TD></TR>
+<TR><TD ALIGN=center><input type="checkbox" name="toolselection" value="9606_access_cons_paccmit"></TD><TD>PACCMIT</TD></TR>
+<TR><TD ALIGN=center><input type="checkbox" name="toolselection" value="9606_Conservation_1_targetrank"></TD><TD>TARGETRANK_Conserved</TD></TR>
+<TR><TD ALIGN=center><input type="checkbox" name="toolselection" value="9606_nfe_-15_nm_0.1_reptar"></TD><TD>Reptar</TD></TR>
+<TR><TD ALIGN=center><input type="checkbox" name="toolselection" value="targetminer_9606_targetminer"></TD><TD>TargetMiner</TD></TR>
+<TR><TD ALIGN=center><input type="checkbox" name="toolselection" value="9606_microrna_org_conserved"></TD><TD>microRNA.org</TD></TR>
+<TR><TD ALIGN=center><input type="checkbox" name="toolselection" value="9606_mirdb"></TD><TD>miRTar</TD></TR>
+<TR><TD ALIGN=center><input type="checkbox" name="toolselection" value="9606_3utr_mirtar"></TD><TD>miRDB</TD></TR>
+<TR><TD ALIGN=center><input type="checkbox" name="toolselection" value="9606_microcosm_mirna2target"></TD><TD>microcosm</TD></TR>
+
+</TABLE>
+</TD>
+                
+<TD WIDTH="10%">
+<TABLE id="" WIDTH="100%">
+<!--Add selection for different feature here-->
+</TABLE>
+</TD>
+
+<TD WIDTH="40%">
+<TABLE id="" WIDTH="100%">
+
+<TR><TD colspan="2"><B>miRNA Target Evidence Database</B></BR></TD></TR>
+<TR><TD ALIGN=center><input type="checkbox" name="toolselection" value="9606_Evidence_SE_mirtarbase"></TD><TD>mirTarbase/Strong Evidence</TD></TR>
+<TR><TD ALIGN=center><input type="checkbox" name="toolselection" value="9606_Evidence_WK_mirtarbase"></TD><TD>mirTarbase/All Evidence</TD></TR>
+<TR><TD ALIGN=center><input type="checkbox" name="toolselection" value="9606_tarbase"></TD><TD>Tarbase</TD></TR>
+
+</TABLE>
+</TABLE>
+
+  <br><br>
+  <input type='reset' value='Reset'/></a>
+  <input type='submit' value='GO !'/>
+</td></tr>
+
+
+</form>
+<!-- Cell END -->
+<!--
+<table cellpadding="0" width="100%" cellspacing="0" border="0" class="cell" align="center">
+<tr><td align=left class="cellbanner">
+<tr><td><p class="text_justify2">Send comments to <a class=gpdb href="mailto:venkata.satagopam@embl.de?subject=Systec:FANCI enquiry/comment">Venkata P. Satagopam</a></td></tr>
+</table>
+<p class="text_justify2">Send comments to <a class=gpdb href="mailto:venkata.satagopam@embl.de?subject=Systec:FANCI enquiry/comment">Venkata P. Satagopam</a>
+-->
+
+<!-- Google analytics -->
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-10962512-1");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+        </body>
+</html>
+

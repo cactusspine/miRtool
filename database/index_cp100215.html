@@ -1,0 +1,279 @@
+<html>
+  <head>
+    <title>
+      Systec:FANCI database
+    </title>
+    <link rel="stylesheet" href="/mirna/database/style/systecquery.css">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js" type="text/JAVASCRIPT"></script>
+    <script type="text/javascript" src="/mirna/database/javascript/id_type.js"></script>  
+
+    <script type="text/javascript" src="/mirna/database/javascript/dynamic_file_upload.js"></script>
+
+<script type="text/javascript">
+ 
+$(document).ready(function() {
+    //hide field and when species selected show the 3rd field set
+    $('#humanDatabase').hide();
+    $('#mouseDatabase').hide();    
+    $('#org').change(function(){
+    if($('#org option:selected').val() == "human"){
+        $('#humanDatabase').show();
+        $('#mouseDatabase').hide();
+    }else{
+    $('#mouseDatabase').show();
+    $('#humanDatabase').hide();
+    }
+    });    
+    //End hide field and when species selected show the 3rd field set
+    
+    //check selectall checkbox and check all the box    
+    $('#selectall').click(function(event) {  //on click 
+        if(this.checked) { // check select status
+            $('.checkboxAll').each(function() { //loop through each checkbox
+                this.checked = true;  //select all checkboxes with class "checkbox1"               
+            });
+        }else{
+            $('.checkboxAll').each(function() { //loop through each checkbox
+                this.checked = false; //deselect all checkboxes with class "checkbox1"                       
+            });         
+        }
+    });
+    //end select all checkbox
+    //check recommanded checkbox and check/uncheck all the box
+    $('#recommanded').click(function(event) {  //on click 
+        if(this.checked) { // check select status
+            $('.checkboxAll').each(function() { //loop through each checkbox
+                this.checked = false; //deselect all checkboxes with class "checkbox1"                       
+             });
+            $('.recommanded').each(function() { //loop through each checkbox
+                this.checked = false; //deselect all checkboxes with class "checkbox1"                       
+            });     
+            $('.recommanded').each(function() { //loop through each checkbox
+                this.checked = true;  //select all checkboxes with class "checkbox1"               
+            });
+        }else{
+            $('.checkboxAll').each(function() { //loop through each checkbox
+                this.checked = false; //deselect all checkboxes with class "checkbox1"                       
+                });         
+            $('.recommanded').each(function() { //loop through each checkbox
+                this.checked = false; //deselect all checkboxes with class "checkbox1"                       
+            });         
+        }
+    });
+    //end check recommanded checkbox and check/uncheck  all the box
+    //check minimum checkbox and check/uncheck all the box
+    $('#minimum').click(function(event) {  //on click 
+        if(this.checked) { // check select status
+            $('.checkboxAll').each(function() { //loop through each checkbox
+                this.checked = false; //deselect all checkboxes with class "checkbox1"                       
+            });         
+            $('.minimum').each(function() { //loop through each checkbox
+                this.checked = true;  //select all checkboxes with class "checkbox1"               
+            });
+        }else{
+            $('.checkboxAll').each(function() { //loop through each checkbox
+                this.checked = false; //deselect all checkboxes with class "checkbox1"                       
+                });
+            $('.minimum').each(function() { //loop through each checkbox
+                this.checked = false; //deselect all checkboxes with class "checkbox1"                       
+            });         
+            
+            }
+    });
+    //end check minimum checkbox and check/uncheck  all the box
+    //fill the Category for id type
+    fillCategory(1);  
+    //End_fill the Category for id type 
+        //creat lisener for load the human miRNA dataSet
+    $("#loadGeneSet").click(function(){
+       $("#text_area_ids").val("PDGFRA\nKIT\n");
+       $("#org").val("human");
+       $("#Category1").val("hgnc_symbol");
+       $('#humanDatabase').show();
+            
+    });
+        $("#loadMirSet").click(function(){
+       $("#text_area_ids").val("hsa-miR-106b-5p\nhsa-miR-20a-5p\n");
+       $("#org").val("human");
+       $("#Category1").val("mirbase_name"); 
+       $('#humanDatabase').show();     
+    });
+//end listener for clicking event
+});           
+</script>
+
+
+
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" >
+
+
+    <!--Insert2 from cbdm google tracker BEGIN-->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-55247263-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+    <!--Insert2 from cbdm google tracker END-->
+    
+    </head>
+
+
+
+<body>
+<div id="page">
+    <header role="banner">        		
+        		<h1>Systec: Integrated Data Portal for miRNA Target Prediction
+                    <br>
+        </h1>
+                    
+      
+</header>
+<nav class="dark">
+                <li><a href="/mirna/database/home.html">Home</a></li>
+                 <li><a href="/mirna/database/index.html">Query</a></li>
+                 <li><a href="/mirna/database/help.html">Help</a></li>
+                 <li><a href="/mirna/database/about.html">About</a></li>
+                 <li><a href="/mirna/database/links.html">Link</a></li>
+    <input class="nav-search" type="text" placeholder="Search..."/>
+        </nav>
+  
+  <form method="POST" action="/cgi-bin/systec.cgi" enctype="multipart/form-data" name="Systec:FANCI">
+      	<div id="main">
+                    
+        		<div id="pagecontent" >
+
+<fieldset>
+    <legend>1.Choose Input</legend>
+  <table border=0 width='100%'>
+ 
+    <tr>
+      <td width='30%'><b>Enter Identifiers </b><img rel='You can either load a text file, load one of our examples, or enter input in the texbox.the Input could be most of the common used ID types for gene, protein and miRNAs.' src='/mirna/database/images/help_icon.gif'></td>
+      <td><span  id='textbuffer' onchange='document.getElementByid("text_area_ids").value=this.innerHTML;'><textarea  name="text_area_ids" id="text_area_ids" cols=35 rows=12></textarea></span><br></td>
+    </tr>
+                <tr>
+                        <td  width="20%"><b>Examples:</b></td>
+                        <td><input type="button" id="loadGeneSet" name="loadgene" value="Load" onclick="loadGeneSet()" >&nbsp;&nbsp;Example of Human Gene Set 
+                         <br>
+                         <input type="button" id="loadMirSet" name="loadgene" value="Load" onClick="loadMirSet()">&nbsp;&nbsp;Example of Human miRNA Set <!--(<a target='_blank' href='download.php?d=.&f=mirna.txt'>download</a>)-->
+                         </td>
+                </tr>
+
+    <tr>
+      <td width='30%'><b>Or upload a file </b></td>
+      <td><b><input type="file" name="ids_file" id="ids_file"/></b></td>
+    </tr>
+                            </table>  
+                    </fieldset>
+                    <br>
+                    <fieldset>
+                        <legend>2.Select Search Mode</legend>
+ <table border=0 width='100%'>
+
+    <tr>
+      <td width='30%'><b>Select identifier type </b></td>
+      <td><span class="custom-dropdown">
+          <div class="select">
+
+              <SELECT  id="Category1" NAME="Category1" onChange="SelectSubCatAll(this.id);"></SELECT></div></span></td>
+  
+    <tr>
+      <td width='30%'><b>Select output type </b></td>
+      <td><span class="custom-dropdown">
+          <div class="select">
+      <SELECT id="SubCat1" NAME="SubCat1"></SELECT>
+          </div></span></td></tr>
+
+    <tr>
+      <td width='30%'><b>Select a species</b></td>
+      <td>
+          <span class="custom-dropdown">
+          <div class="select">
+      <SELECT id="org" NAME="org">
+        <option value="0" selected="selected">[ Select a Species  ]</option>
+                <option value="human">Homo Sapiens</option>
+                <option value="mouse">Mus musculus</option>
+      </SELECT>
+              </div></span>      
+    </td></tr>
+  </table>
+        </fieldset>
+        <br>
+        <fieldset id="humanDatabase">
+          <legend>3. Select Databases</legend>
+<TABLE BORDER=0  width='100%'>
+
+<TR VALIGN='TOP'>
+<TD WIDTH="40%">
+<TABLE  border='0' WIDTH="100%">
+    
+<TR><TD colspan="2"><B>Choose Prediction Algorithms</B></BR></TD></TR>
+<TR><TD ALIGN=center width="20%"><input class="checkboxAll" type="checkbox" name="toolselection" value="9606_pita_no_flank_TOP">   </TD><TD>PITA_TOP</TD></TR>        
+<TR><TD ALIGN=center width="20%"><input class="recommanded" type="checkbox" name="toolselection" value="9606_access_cons_paccmit">   </TD><TD>PACCMIT</TD></TR>
+<TR><TD ALIGN=center width="20%"><input  class="checkboxAll recommanded" type="checkbox" name="toolselection" value="9606_cons_paccmit_cds">   </TD><TD>PACCMIT-CDS</TD></TR>
+<TR><TD ALIGN=center width="20%"><input  class="checkboxAll" type="checkbox" name="toolselection" value="9606_mirna_2_2_1"> </TD><TD>TargetScan_Conserved</TD></TR>
+<TR><TD ALIGN=center width="20%"><input class="checkboxAll" type="checkbox"  name="toolselection" value="9606_P_0.5_eimmo" ></TD><TD>EIMMO_conserved</TD></TR>
+<TR><TD ALIGN=center width="20%"><input type="checkbox"  class="checkboxAll" name="toolselection" value="9606_TG0.7_CDS_microT"></TD><TD>Diana MicroT-CDS</TD></TR>
+<TR><TD ALIGN=center width="20%"><input type="checkbox"  class="checkboxAll" name="toolselection" value="9606_spec_seed_targetspy"></TD><TD>TargetSpy</TD></TR>
+<TR><TD ALIGN=center width="20%"><input type="checkbox"  class="checkboxAll" name="toolselection" value="9606_pictar_most_conserved"></TD><TD>Pictar_Conserved</TD></TR>
+<TR><TD ALIGN=center width="20%"><input type="checkbox"  class="checkboxAll" name="toolselection" value="9606_Conservation_1_targetrank"></TD><TD>TARGETRANK_Conserved</TD></TR>
+<TR><TD ALIGN=center width="20%"><input type="checkbox"  class="checkboxAll" name="toolselection" value="9606_nfe_-15_nm_0.1_reptar"></TD><TD>Reptar_strict</TD></TR>
+<TR><TD ALIGN=center width="20%"><input type="checkbox"  class="checkboxAll" name="toolselection" value="targetminer_9606_targetminer"></TD><TD>TargetMiner</TD></TR>
+<TR><TD ALIGN=center width="20%"><input type="checkbox"  class="checkboxAll" name="toolselection" value="9606_microrna_org_conserved"></TD><TD>microRNA.org</TD></TR>
+<TR><TD ALIGN=center width="20%"><input type="checkbox" class="checkboxAll" name="toolselection" value="9606_mirdb"></TD><TD>miRDB</TD></TR>
+<TR><TD ALIGN=center width="20%"><input type="checkbox" class="checkboxAll"name="toolselection" value="9606_3utr_mirtar"></TD><TD>miRTar</TD></TR>
+<TR><TD ALIGN=center width="20%"><input type="checkbox" class="checkboxAll"name="toolselection" value="9606_microcosm_mirna2target"></TD><TD>microcosm</TD></TR>
+
+
+</TABLE>
+</TD>
+                
+<TD WIDTH="20%">
+<TABLE id="" WIDTH="100%">
+<!--Add selection for different feature here-->
+</TABLE>
+</TD>
+
+<TD WIDTH="40%">
+<TABLE id="" WIDTH="100%">
+
+<TR><TD colspan="2"><B>miRNA Target Evidence Database</B></BR></TD></TR>
+<TR><TD ALIGN=center width="20%"><input type="checkbox" class="recommanded" name="toolselection" value="9606_Evidence_SE_mirtarbase"></TD><TD>mirTarbase/Strong Evidence</TD></TR>
+<TR><TD ALIGN=center width="20%"><input type="checkbox" class="checkboxAll" name="toolselection" value="9606_Evidence_WK_mirtarbase"></TD><TD>mirTarbase/All Evidence</TD></TR>
+<TR><TD ALIGN=center width="20%"><input type="checkbox" class="checkboxAll" name="toolselection" value="9606_tarbase"></TD><TD>Tarbase</TD></TR>
+   <tr><td colspan="2">&nbsp;</td></tr> 
+     <tr><td colspan="2">&nbsp;</td></tr> 
+     <tr> <td  align=center width="20%"><input id="selectall" class="circles" type="checkbox" name="SelectAll" value="SelectAll" ></td><td><b>Select All</b></td></tr>
+     <tr> <td  align=center width="20%"><input id="recommanded" class="circles" type="checkbox" name="recommanded" value="recomanded" ></td><td><b>Recommanded Set</b></td></tr>
+     <tr> <td  align=center width="20%"><input id="minimum" class="circles" type="checkbox" name="minimum" value="minimum"></td><td><b>Minimum Set</b></td></tr>
+     <tr><td colspan="2">&nbsp;</td></tr> 
+     <tr><td colspan="2"><tr><td><b>Minimum Priority Requirement</b><br>by default is 3</td><td><input type="number" name="priority_user" min="1" max="20"></td></tr></td></tr>
+                       
+</TABLE>
+</TABLE>
+    </fieldset> 
+    <br>
+
+<div align=center>
+  <input type='reset' value='Reset'/>
+  <input type='submit' value='GO !'/>
+        </div>
+</form>
+   
+                       </div><!--id pagecontent-->
+
+                </div><!--main-->
+  <footer>
+        		<p> If you have any feedback/suggestions or bugs please contact <a href="mailto:jiali.wang@uni.lu?subject=systecEnqury" style="color:white">jiali.wang@uni.lu</a></p>
+        	</footer>   
+
+         
+        </div><!--page-->
+
+</body>
+</html>
+

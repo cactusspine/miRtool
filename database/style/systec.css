@@ -1,0 +1,417 @@
+body {
+  background-color: #ffffff;
+  color:            #000000;
+  font-family:      arial,helvetica,sans-serif;
+  font-size:        10pt;
+}
+
+p { 
+  font-size: 10pt;
+}
+
+td {
+  font-size: 8pt;
+}
+
+td.banner_title {
+  font-family: verdana; 
+  color: white;
+  font-size: 180%; 
+}
+td.banner_subtitle  {
+  font-family: verdana;
+  font-size: 100%;
+  color: white;
+}
+
+.banner {
+  background-color: #e3fdde;
+  font-size:        14pt;
+  color:            #336633;
+  margin:           2pt 10pt 10pt 10pt;
+  padding:          0pt 5pt 0pt 5pt;
+  font-weight:      bold;
+}
+
+.subhead {
+  background-color: #e3fdde;
+  font-size:        10pt;
+  border-bottom:    1px solid #000000;
+  border-left:      1px solid #000000;
+  color:            #336633;
+  margin:           5pt 200pt 5pt 10pt;
+  padding:          0pt 0pt 0pt 5pt;
+  font-weight:      bold;
+  text-transform:   capitalize;
+}
+
+.minorhead {
+  background-color: #e3fdde;
+  font-size:        8pt;
+  border-bottom:    1px solid #000000;
+  border-left:      1px solid #000000;
+  color:            #336633;
+  margin:           5pt 200pt 5pt 10pt;
+  padding:          0pt 0pt 0pt 5pt;
+  font-weight:      bold;
+  text-transform:   capitalize;
+}
+
+#navlist ul {
+  margin:          0;    /* removes indent IE and Opera    */
+  padding:         0;    /* removes indent Mozilla and NN7 */
+  list-style-type: none; /* turns off display of bullet    */
+  font-family:     Arial, Helvetica, sans-serif;
+  font-size:       12px;
+  font-weight:     bold;
+  text-align:      center;
+}
+
+#menu1 li {
+  margin: 0 0 3px 0;
+}
+
+#menu1 a {
+  display:      block;
+  padding:      2px 2px 2px 2px;
+  border-style: outset;
+}
+
+#menu1 a {
+  width: 100px;
+}
+
+#menu1 a:link,
+#menu1 a:visited {
+  text-decoration: none;
+}
+
+#menu1 a:hover {
+  border-style: inset;
+}
+
+#menu1 a {
+  color:            #eeeeee; 
+  border-color:     #254117;
+  background-color: #336633;
+}
+
+#menu1 a:hover {
+  color:            #336633;
+  border-color:     #254117;
+  background-color: #e3fdde;
+}
+
+a:link {
+  color:           #336633;
+  text-decoration: none;
+  font-weight:     bold;
+}
+
+a:visited {
+  color:           #000070;
+  text-decoration: none;
+  font-weight:     bold;
+}
+
+a:hover {
+  color :          #5a85d6;
+  text-decoration: underline;
+  font-weight:     bold;
+}
+
+.header {
+  border:           1px solid #000000;
+  background-color: #336633;
+}
+
+.footer {
+  border:           1px solid #000000; 
+  font-size:        8pt;
+  text-align:       left;
+  white-space:      nowrap;
+  background-color: #e3fdde;
+}
+
+#headlinks a:link,
+#headlinks a:visited {
+  color:           #ffffff;
+  font-size:       10pt;
+  font-weight:     bold;
+  text-decoration: none;
+}
+
+#headlinks a:hover {
+  color:           #e3fdde;
+  font-weight:     bold;
+  text-decoration: underline;
+}
+       
+#headlinks td {
+  color:       #ffffff;
+  font-size:   10pt;
+  font-weight: bold;
+}
+
+/* rounded boxes - start */
+
+.roundedboxedge {
+  background-color: #336633;
+  color:            #ffffff;
+}
+
+.roundedboxbg {
+  background-color: #e3fdde;
+}
+
+/* rounded boxes - end */
+
+/* rounded news boxes - start */
+
+.newstext {
+ font-size: 8pt; 
+}
+
+.titlenewstext {
+  background-color: #336633;
+  color:            #ffffff;
+  font-weight:      bold;
+  font-size:        8pt; 
+  white-space:      nowrap;
+}
+
+.tablebackground {
+  background-color: #e3fdde;
+  font-size:        10;
+}
+
+/* rounded news boxes - end */
+
+.table {
+  border:           1px solid #000000;
+  border-style:     dotted;
+  border-width:     1;
+  background-color: #e3fdde;
+  font-size:        8pt;
+  padding:          10;
+  margin:           10;
+}
+
+th {
+  background-color: #336633;
+  font-size:        10pt;
+  text-align:       left;
+  color:            ffffff;
+  white-space:      nowrap;
+  padding:          3;
+}
+
+/* script css start */ 
+
+.td-data {
+  font-size: 10pt;
+}
+
+a:link.genes { 
+  color:           #228b22;
+  text-decoration: none;
+  font-weight:     bold;
+}
+
+a:visited.genes {
+  color:           #fe761b;
+  text-decoration: none;
+  font-weight:     bold;
+}
+
+a:hover.genes {
+  color:           #a00000;
+  text-decoration: underline;
+  font-weight:     bold;
+}
+
+.hugo {
+  background-color: #e3fdde;
+  font-size:        12pt;
+  color:            #336633;
+  margin:           5pt 5pt 5pt 10pt;
+  padding:          0pt 0pt 0pt 5pt;
+  font-weight:      bold;
+}
+
+.names {
+  background-color: #e3fdde;
+  font-size:        12pt;
+  color:            #336633;
+  margin:           5pt 5pt 5pt 10pt;
+  padding:          0pt 0pt 0pt 5pt;
+  font-weight:      bold;
+}
+
+.movie_page_names {
+  background-color: #e3fdde;
+  font-size:        12pt;
+  color:            #336633;
+  margin:           5pt 15pt 5pt 10pt;
+  padding:          0pt 0pt 0pt 5pt;
+  font-weight:      bold;
+}
+
+
+.mito-id {
+  background-color: #e3fdde;
+  font-size:        12pt;
+  color:            #336633;
+  margin:           5pt 5pt 5pt 10pt;
+  padding:          0pt 0pt 0pt 5pt;
+  font-weight:      bold;
+}
+
+a:link.special { 
+  color:           #d63194;
+  text-decoration: none;
+  font-weight:     bold;
+}
+
+a:visited.special {
+  color:           #e78cc6;
+  text-decoration: none;
+  font-weight:     bold;
+}
+
+a:hover.special {
+  color:           #a00000;
+  text-decoration: underline;
+  font-weight:     bold;
+}
+
+a:link.hide {
+  color:           white;
+  font-weight:     bold;	
+}
+
+a:visited.hide {
+  color:           white;
+  font-weight:     bold;	
+}
+
+.minor_title {
+  font-family:verdana;
+  font-size:        120%;
+  color:            #336633;
+  font-weight:      bold;
+}
+
+/* initial script css end */
+
+
+/* $Id: example.css,v 1.5 2006/03/27 02:44:36 pat Exp $ */
+
+/*--------------------------------------------------
+  REQUIRED to hide the non-active tab content.
+  But do not hide them in the print stylesheet!
+  --------------------------------------------------*/
+.tabberlive .tabbertabhide {
+ display:none;
+}
+
+/*--------------------------------------------------
+  .tabber = before the tabber interface is set up
+  .tabberlive = after the tabber interface is set up
+  --------------------------------------------------*/
+.tabber {
+}
+.tabberlive {
+ margin-top:1em;
+}
+
+/*--------------------------------------------------
+  ul.tabbernav = the tab navigation list
+  li.tabberactive = the active tab
+  --------------------------------------------------*/
+ul.tabbernav
+{
+ margin:0;
+ padding: 3px 0;
+ border-bottom: 1px solid #778;
+ font: bold 10px Verdana, sans-serif;
+}
+
+ul.tabbernav li
+{
+ list-style: none;
+ margin: 0;
+ display: inline;
+}
+
+ul.tabbernav li a
+{
+ padding: 3px 0.5em;
+ margin-left: 3px;
+ border: 1px solid #778;
+ border-bottom: none;
+ background: #e3fdde;
+ text-decoration: none;
+}
+
+ul.tabbernav li a:link { color: #336633; }
+ul.tabbernav li a:visited { color: #336633; }
+
+ul.tabbernav li a:hover
+{
+ color: #000;
+ background: #AAE;
+ border-color: #227;
+}
+
+ul.tabbernav li.tabberactive a
+{
+ background-color: #fff;
+ border-bottom: 1px solid #fff;
+}
+
+ul.tabbernav li.tabberactive a:hover
+{
+ color: #000;
+ background: white;
+ border-bottom: 1px solid white;
+}
+
+/*--------------------------------------------------
+  .tabbertab = the tab content
+  Add style only after the tabber interface is set up (.tabberlive)
+  --------------------------------------------------*/
+.tabberlive .tabbertab {
+ padding:5px;
+ border:1px solid #aaa;
+ border-top:0;
+
+ /* If you don't want the tab size changing whenever a tab is changed
+    you can set a fixed height */
+
+ /* height:200px; */
+
+ /* If you set a fix height set overflow to auto and you will get a
+    scrollbar when necessary */
+
+ /* overflow:auto; */
+}
+
+/* If desired, hide the heading since a heading is provided by the tab */
+.tabberlive .tabbertab h2 {
+ display:none;
+}
+.tabberlive .tabbertab h3 {
+ display:none;
+}
+
+/* Example of using an ID to set different styles for the tabs on the page */
+.tabberlive#tab1 {
+}
+.tabberlive#tab2 {
+}
+.tabberlive#tab2 .tabbertab {
+ height:400px;
+ overflow:auto;
+}
+

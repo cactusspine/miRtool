@@ -1,0 +1,69 @@
+package DbHumanChemicalDetails;
+
+use DbSession;
+use Carp;
+
+use base DeepPrintable;
+
+use constant ID_LOAD_STATEMENT => "SELECT * FROM human_chemical_details WHERE id=?";
+
+
+sub GetChemicalDetailsForBioentityId {
+	my $bioentity_id = shift;
+	 my @ids = ();
+	if ($bioentity_id) {
+		my $query =  "SELECT id FROM human_chemical_details WHERE bioentity_id = ?";
+		my $databaseHandle = DbSession::GetConnection();
+#		my $select = $databaseHandle->prepare($statement);
+#  	$select->execute($bioentity_id);
+    my $select = $databaseHandle->prepare($query) or die "unable to prepare query : $query" . $databaseHandle->errstr;
+    $select->execute($bioentity_id) or die "unable to execute" . $databaseHandle->errstr;
+	        my $nr = $select->rows();
+        	while ($nr--) {
+                	push @ids, $select->fetchrow_array();
+	        }	
+	} # if ($bioentity_id) {
+	@ids;
+} # sub GetChemicalDetailsForBioentityId {
+
+
+sub new {
+    my $class = shift;
+    my $this = $class->SUPER::new();
+
+    $this->{id} = 0;
+    $this->{category} = '';
+    $this->{bioentity_id} = 0;
+    $this->{biological_db_id} = 0;
+    $this->{bio_element_name} = '';
+
+    $this->_initialize(@_);
+    $this;
+}
+
+sub _initialize {
+    my $this = shift;
+    my $id = shift;
+    my $loadStatement = ID_LOAD_STATEMENT;
+
+    if ($id) {
+	my $databaseHandle = DbSession::GetConnection();
+	my $select = $databaseHandle->prepare($loadStatement);
+	$select->execute($id);
+	if ($select->rows == 1) {
+	    my @attr = $select->fetchrow_array;
+	    $this->{id} = shift @attr;
+            $this->{category} = shift @attr;
+            $this->{bioentity_id} = shift @attr;
+            $this->{biological_db_id} = shift @attr;
+            $this->{bio_element_name} = shift @attr;
+	}
+	else{
+#print "loadStatement : $loadStatement\n";
+	    carp "Initializing human_chemical_details : unexpected number of records = ",$select->rows,"\n";
+	}
+    }
+}
+
+
+1;

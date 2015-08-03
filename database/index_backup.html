@@ -1,0 +1,115 @@
+<html>
+	<head>
+		<title>
+			Systec:FANCI database
+		</title>
+		<link rel="stylesheet" href="/mirna/database/style/systec.css">
+		<script type="text/javascript" src="/mirna/database/javascript/overlib.js"><!-- overLIB (c) Erik Bosrup --></script>
+		<script type="text/javascript" src="/mirna/database/javascript/tool_tip.js"></script>
+		<script type="text/javascript" src="/mirna/database/javascript/dynamic_file_upload.js"></script>
+		<script type="text/javascript" src="/mirna/database/javascript/id_type.js"></script>	
+		<script type="text/javascript" src="/mirna/database/javascript/prototype.js"></script>
+		<script type="text/javascript" src="/mirna/database/javascript/effects.js"></script>
+		<script type="text/javascript" src="/mirna/database/javascript/dragdrop.js"></script>
+		<script type="text/javascript" src="/mirna/database/javascript/controls.js"></script>
+	</head>
+	<body onload="fillCategory(1);">	
+	<form method="POST" action="/cgi-bin/systec.cgi" enctype="multipart/form-data" name="Systec:FANCI">
+
+<td class="framedata" valign="top">
+<table cellpadding="0" width="100%" cellspacing="0" border="0" class="column">
+<tr><td class="columndata">
+
+<!-- Cell START -->
+<table cellpadding="0" width="100%" cellspacing="0" border="0" class="cell" align="center">
+
+<!--
+<tr><td align=left class="cellbanner">
+Systec:FANCI database
+</td></tr>
+-->
+<tr><td class="cellbodyx">
+<br>
+<!--
+	<small class="text_justify"><b>Simple search:</b></small>
+	<br><br>
+	<table> <tr><td>
+	<div><small class="text_justify"><b><i>Search  </i></b></small></td><td><small class="text_justify"><b><i><input name="search" id="search" maxlength="40" alt="Search" type="text" size="40"> in Systec:FANCI database <input type='submit' value='Find'/></i></b></small><span id="indicator1" style="display: none"></span></div>
+	<div id="search_update" style="display:none; border:1px solid black;background-color:white;"></div></td></tr>
+
+-->
+<script type="text/javascript" language="javascript" charset="utf-8">
+    // <![CDATA[
+      new Ajax.Autocompleter('search','search_update','/cgi-bin/systec_auto_select.cgi',{method:'get', minChars:1, frequency:0.1, indicator:'indicator1'}); <!-- , indicator:'indicator1' -->
+    // ]]>
+</script>
+<!--
+<tr><td></td><td>
+<small class="text_justify">examples: <a href="http://rschneider.embl.de/cgi-bin/systec.cgi?search=p53_human">p53_human</a>, <a href="http://rschneider.embl.de/cgi-bin/systec.cgi?search=nr1h2">nr1h2</a></small></td></tr>
+	</table>
+	<br><br>
+	<br><br>
+	<small class="text_justify_big"><b>Input :</b></small>
+	<br><br>
+-->
+	<table border=0>
+		<tr>
+			<td><small class="text_justify"><b><i>Enter Identifiers </i></b></small></td>
+			<td><textarea  name="text_area_ids" cols=35 rows=12></textarea><br></td>
+		</tr>
+
+		<tr>
+			<td><small class="text_justify"><b><i>Or upload a file </i></b></small></td>
+			<td><small class="text_justify"><b><i><input type="file" name="ids_file" id="ids_file"/></i></b></small></td>
+		</tr>
+		<tr>
+			<td><small class="text_justify"><b><i>Select identifier type </i></b></small></td>
+			<td><small class="text_justify">
+
+		 <SELECT  id="Category1" NAME="Category1" onChange="SelectSubCatAll(this.id);"></SELECT>
+	
+		<tr>
+			<td><small class="text_justify"><b><i>Select output type </i></b></small></td>
+			<td><small class="text_justify">
+			<SELECT id="SubCat1" NAME="SubCat1"></SELECT>
+		</small></td></tr>
+		<tr>
+			<td><small class="text_justify"><b><i>Select a species</i></b></small></td>
+			<td><small class="text_justify">
+			<SELECT id="org" NAME="org">
+				<option value="0" selected="selected">[ Select a Species  ]</option>
+                <option value="human">Homo Sapiens</option>
+                <option value="mouse">Mus musculus</option>
+			</SELECT>
+		</small></td></tr>
+	</table>
+
+	<br><br>
+	<input type='reset' value='Reset'/></a>
+	<input type='submit' value='GO !'/>
+</td></tr>
+
+</table>
+<!-- Cell END -->
+<!--
+<table cellpadding="0" width="100%" cellspacing="0" border="0" class="cell" align="center">
+<tr><td align=left class="cellbanner">
+<tr><td><p class="text_justify2">Send comments to <a class=gpdb href="mailto:venkata.satagopam@embl.de?subject=Systec:FANCI enquiry/comment">Venkata P. Satagopam</a></td></tr>
+</table>
+<p class="text_justify2">Send comments to <a class=gpdb href="mailto:venkata.satagopam@embl.de?subject=Systec:FANCI enquiry/comment">Venkata P. Satagopam</a>
+-->
+
+<!-- Google analytics -->
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-10962512-1");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+        </body>
+</html>
+
+

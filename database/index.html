@@ -1,0 +1,332 @@
+<html>
+  <head>
+    <title>
+      Systec:FANCI database
+    </title>
+    <link rel="stylesheet" href="/mirna/database/style/systecquery.css">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js" type="text/JAVASCRIPT"></script>
+    <script type="text/javascript" src="/mirna/database/javascript/id_type.js"></script>  
+
+    <script type="text/javascript" src="/mirna/database/javascript/dynamic_file_upload.js"></script>
+
+<script type="text/javascript">
+ 
+$(document).ready(function() {
+    //hide field and when species selected show the 3rd field set
+    $('#humanDatabase').hide();
+    $('#mouseDatabase').hide();    
+    $('#org').change(function(){
+    if($('#org option:selected').val() == "human"){
+        $('#humanDatabase').show();
+        $('#mouseDatabase').hide();
+    }else{
+    $('#mouseDatabase').show();
+    $('#humanDatabase').hide();
+    }
+    });    
+    //End hide field and when species selected show the 3rd field set
+    //add tissue filter
+    var tissue = {"tissue" :[{"title":"adrenal gland","id":1,"children":[{"title":"glandular cells","id":49}]},{"title":"appendix","id":2,"children":[{"title":"glandular cells","id":50},{"title":"lymphoid tissue","id":51}]},{"title":"bone marrow","id":3,"children":[{"title":"hematopoietic cells","id":52}]},{"title":"breast","id":4,"children":[{"title":"adipocytes","id":53},{"title":"glandular cells","id":54},{"title":"myoepithelial cells","id":55}]},{"title":"bronchus","id":5,"children":[{"title":"respiratory epithelial cells","id":56}]},{"title":"cerebellum","id":6,"children":[{"title":"cells in granular layer","id":57},{"title":"cells in molecular layer","id":58},{"title":"Purkinje cells","id":59}]},{"title":"cerebral cortex","id":7,"children":[{"title":"endothelial cells","id":60},{"title":"glial cells","id":61},{"title":"neuronal cells","id":62},{"title":"neuropil","id":63}]},{"title":"cervix, uterine","id":8,"children":[{"title":"glandular cells","id":64},{"title":"squamous epithelial cells","id":65}]},{"title":"colon","id":9,"children":[{"title":"endothelial cells","id":66},{"title":"glandular cells","id":67},{"title":"peripheral nerve/ganglion","id":68}]},{"title":"duodenum","id":10,"children":[{"title":"glandular cells","id":69}]},{"title":"epididymis","id":11,"children":[{"title":"glandular cells","id":70}]},{"title":"esophagus","id":12,"children":[{"title":"squamous epithelial cells","id":71}]},{"title":"fallopian tube","id":13,"children":[{"title":"glandular cells","id":72}]},{"title":"gallbladder","id":14,"children":[{"title":"glandular cells","id":73}]},{"title":"heart muscle","id":15,"children":[{"title":"myocytes","id":74}]},{"title":"hippocampus","id":16,"children":[{"title":"glial cells","id":75},{"title":"neuronal cells","id":76}]},{"title":"kidney","id":17,"children":[{"title":"cells in glomeruli","id":77},{"title":"cells in tubules","id":78}]},{"title":"lateral ventricle","id":18,"children":[{"title":"glial cells","id":79},{"title":"neuronal cells","id":80}]},{"title":"liver","id":19,"children":[{"title":"bile duct cells","id":81},{"title":"hepatocytes","id":82}]},{"title":"lung","id":20,"children":[{"title":"macrophages","id":83},{"title":"pneumocytes","id":84}]},{"title":"lymph node","id":21,"children":[{"title":"germinal center cells","id":85},{"title":"non-germinal center cells","id":86}]},{"title":"nasopharynx","id":22,"children":[{"title":"respiratory epithelial cells","id":87}]},{"title":"oral mucosa","id":23,"children":[{"title":"squamous epithelial cells","id":88}]},{"title":"ovary","id":24,"children":[{"title":"follicle cells","id":89},{"title":"ovarian stroma cells","id":90}]},{"title":"pancreas","id":25,"children":[{"title":"exocrine glandular cells","id":91},{"title":"islets of Langerhans","id":92}]},{"title":"parathyroid gland","id":26,"children":[{"title":"glandular cells","id":93}]},{"title":"placenta","id":27,"children":[{"title":"decidual cells","id":94},{"title":"trophoblastic cells","id":95}]},{"title":"prostate","id":28,"children":[{"title":"glandular cells","id":96}]},{"title":"rectum","id":29,"children":[{"title":"glandular cells","id":97}]},{"title":"salivary gland","id":30,"children":[{"title":"glandular cells","id":98}]},{"title":"seminal vesicle","id":31,"children":[{"title":"glandular cells","id":99}]},{"title":"skeletal muscle","id":32,"children":[{"title":"myocytes","id":100}]},{"title":"skin 1","id":33,"children":[{"title":"fibroblasts","id":101},{"title":"keratinocytes","id":102},{"title":"Langerhans","id":103},{"title":"melanocytes","id":104}]},{"title":"skin 2","id":34,"children":[{"title":"epidermal cells","id":105}]},{"title":"small intestine","id":35,"children":[{"title":"glandular cells","id":106}]},{"title":"smooth muscle","id":36,"children":[{"title":"smooth muscle cells","id":107}]},{"title":"soft tissue 1","id":37,"children":[{"title":"adipocytes","id":108},{"title":"chondrocytes","id":109},{"title":"fibroblasts","id":110},{"title":"peripheral nerve","id":111}]},{"title":"soft tissue 2","id":38,"children":[{"title":"adipocytes","id":112},{"title":"chondrocytes","id":113},{"title":"fibroblasts","id":114},{"title":"peripheral nerve","id":115}]},{"title":"spleen","id":39,"children":[{"title":"cells in red pulp","id":116},{"title":"cells in white pulp","id":117}]},{"title":"stomach 1","id":40,"children":[{"title":"glandular cells","id":118}]},{"title":"stomach 2","id":41,"children":[{"title":"glandular cells","id":119}]},{"title":"testis","id":42,"children":[{"title":"cells in seminiferous ducts","id":120},{"title":"Leydig cells","id":121}]},{"title":"thyroid gland","id":43,"children":[{"title":"glandular cells","id":122}]},{"title":"tonsil","id":44,"children":[{"title":"germinal center cells","id":123},{"title":"non-germinal center cells","id":124},{"title":"squamous epithelial cells","id":125}]},{"title":"urinary bladder","id":45,"children":[{"title":"urothelial cells","id":126}]},{"title":"uterus 1","id":46,"children":[{"title":"cells in endometrial stroma","id":127},{"title":"glandular cells","id":128}]},{"title":"uterus 2","id":47,"children":[{"title":"cells in endometrial stroma","id":129},{"title":"glandular cells","id":130}]},{"title":"vagina","id":48,"children":[{"title":"squamous epithelial cells","id":131}]}]
+             }      
+ $.each(tissue.tissue, function (index, value) {
+    $("#tissue").append('<option value="'+value.title+'">'+value.title+'</option>');
+});       
+ $('#tissue').on('change', function(){
+    console.log($(this).val());
+    for(var i = 0; i < tissue.tissue.length; i++)
+    {
+      if(tissue.tissue[i].title == $(this).val())
+      {
+         $('#cell_type').html('<option value="">-Select a Cell Type-</option>');
+         $.each(tissue.tissue[i].children, function (index, value) {
+            $("#cell_type").append('<option value="'+value.title+'">'+value.title+'</option>');
+        });
+      }
+    }
+});
+    
+    //end add tissue filter   
+    //check selectall checkbox and check all the box    
+    $('#selectall').click(function(event) {  //on click 
+        if(this.checked) { // check select status
+            $('.checkboxAll').each(function() { //loop through each checkbox
+                this.checked = true;  //select all checkboxes with class "checkbox1"               
+            });
+        }else{
+            $('.checkboxAll').each(function() { //loop through each checkbox
+                this.checked = false; //deselect all checkboxes with class "checkbox1"                       
+            });         
+        }
+    });
+    //end select all checkbox
+    //check recommanded checkbox and check/uncheck all the box
+    $('#recommanded').click(function(event) {  //on click 
+        if(this.checked) { // check select status
+            $('.checkboxAll').each(function() { //loop through each checkbox
+                this.checked = false; //deselect all checkboxes with class "checkbox1"                       
+             });
+            $('.recommanded').each(function() { //loop through each checkbox
+                this.checked = false; //deselect all checkboxes with class "checkbox1"                       
+            });     
+            $('.recommanded').each(function() { //loop through each checkbox
+                this.checked = true;  //select all checkboxes with class "checkbox1"               
+            });
+        }else{
+            $('.checkboxAll').each(function() { //loop through each checkbox
+                this.checked = false; //deselect all checkboxes with class "checkbox1"                       
+                });         
+            $('.recommanded').each(function() { //loop through each checkbox
+                this.checked = false; //deselect all checkboxes with class "checkbox1"                       
+            });         
+        }
+    });
+    //end check recommanded checkbox and check/uncheck  all the box
+    //check minimum checkbox and check/uncheck all the box
+    $('#minimum').click(function(event) {  //on click 
+        if(this.checked) { // check select status
+            $('.checkboxAll').each(function() { //loop through each checkbox
+                this.checked = false; //deselect all checkboxes with class "checkbox1"                       
+            });         
+            $('.minimum').each(function() { //loop through each checkbox
+                this.checked = true;  //select all checkboxes with class "checkbox1"               
+            });
+        }else{
+            $('.checkboxAll').each(function() { //loop through each checkbox
+                this.checked = false; //deselect all checkboxes with class "checkbox1"                       
+                });
+            $('.minimum').each(function() { //loop through each checkbox
+                this.checked = false; //deselect all checkboxes with class "checkbox1"                       
+            });         
+            
+            }
+    });
+    //end check minimum checkbox and check/uncheck  all the box
+    //fill the Category for id type
+    fillCategory(1);  
+    //End_fill the Category for id type 
+        //creat lisener for load the human miRNA dataSet
+    $("#loadGeneSet").click(function(){
+       $("#text_area_ids").val("PDGFRA\nKIT\n");
+       $("#org").val("human");
+       $("#Category1").val("hgnc_symbol");
+       $('#humanDatabase').show();
+            
+    });
+        $("#loadMirSet").click(function(){
+       $("#text_area_ids").val("hsa-miR-106b-5p\nhsa-miR-20a-5p\n");
+       $("#org").val("human");
+       $("#Category1").val("mirbase_name"); 
+       $('#humanDatabase').show();     
+    });
+//end listener for clicking event
+});           
+</script>
+
+
+
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" >
+
+
+    <!--Insert2 from cbdm google tracker BEGIN-->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-55247263-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+    <!--Insert2 from cbdm google tracker END-->
+    
+    </head>
+
+
+
+<body>
+<div id="page">
+    <header role="banner">        		
+        		<h1>Systec: Integrated Data Portal for miRNA Target Prediction
+                    <br>
+        </h1>
+                    
+      
+</header>
+<nav class="dark">
+                <li><a href="/mirna/database/home.html">Home</a></li>
+                 <li><a href="/mirna/database/index.html">Query</a></li>
+                 <li><a href="/mirna/database/help.html">Help</a></li>
+                 <li><a href="/mirna/database/about.html">About</a></li>
+                 <li><a href="/mirna/database/links.html">Link</a></li>
+    <input class="nav-search" type="text" placeholder="Search..."/>
+        </nav>
+  
+  <form method="POST" action="/cgi-bin/systec.cgi" enctype="multipart/form-data" name="Systec:FANCI">
+      	<div id="main">
+                    
+        		<div id="pagecontent" >
+
+<fieldset>
+    <legend>1.Choose Input</legend>
+  <table border=0 width='100%'>
+ 
+    <tr>
+      <td width='30%'><b>Enter Identifiers </b><img rel='You can either load a text file, load one of our examples, or enter input in the texbox.the Input could be most of the common used ID types for gene, protein and miRNAs.' src='/mirna/database/images/help_icon.gif'></td>
+      <td><span  id='textbuffer' onchange='document.getElementByid("text_area_ids").value=this.innerHTML;'><textarea  name="text_area_ids" id="text_area_ids" cols=35 rows=12></textarea></span><br></td>
+    </tr>
+                <tr>
+                        <td  width="20%"><b>Examples:</b></td>
+                        <td><input type="button" id="loadGeneSet" name="loadgene" value="Load" onclick="loadGeneSet()" >&nbsp;&nbsp;Example of Human Gene Set 
+                         <br>
+                         <input type="button" id="loadMirSet" name="loadgene" value="Load" onClick="loadMirSet()">&nbsp;&nbsp;Example of Human miRNA Set <!--(<a target='_blank' href='download.php?d=.&f=mirna.txt'>download</a>)-->
+                         </td>
+                </tr>
+
+    <tr>
+      <td width='30%'><b>Or upload a file </b></td>
+      <td><b><input type="file" name="ids_file" id="ids_file"/></b></td>
+    </tr>
+                            </table>  
+                    </fieldset>
+                    <br>
+                    <fieldset>
+                        <legend>2.Select Search Mode</legend>
+ <table border=0 width='100%'>
+
+    <tr>
+      <td width='30%'><b>Select identifier type </b></td>
+      <td><span class="custom-dropdown">
+          <div class="select">
+
+              <SELECT  id="Category1" NAME="Category1" onChange="SelectSubCatAll(this.id);"></SELECT></div></span></td>
+  
+    <tr>
+      <td width='30%'><b>Select output type </b></td>
+      <td><span class="custom-dropdown">
+          <div class="select">
+      <SELECT id="SubCat1" NAME="SubCat1"></SELECT>
+          </div></span></td></tr>
+
+    <tr>
+      <td width='30%'><b>Select a species</b></td>
+      <td>
+          <span class="custom-dropdown">
+          <div class="select">
+      <SELECT id="org" NAME="org">
+        <option value="0" selected="selected">[ Select a Species  ]</option>
+                <option value="human">Homo Sapiens</option>
+                <option value="mouse">Mus musculus</option>
+      </SELECT>
+              </div></span>      
+    </td></tr>
+                <tr>
+      <td width='30%'><b>Select tissue type</b></td>
+      <td>
+          <span class="custom-dropdown">
+          <div class="select">
+      <SELECT id="tissue" name="tissue">
+        <option value="" selected="selected">-Select Human Tissue Type-</option>
+      </SELECT>
+              </div></span>      
+    </td></tr>
+            <tr>
+      <td width='30%'><b>Select cell type</b></td>
+      <td>
+          <span class="custom-dropdown">
+          <div class="select">
+      <SELECT id="cell_type" NAME="cell_type">
+        <option value="" selected="selected">-Select a Cell Type-</option>
+       </SELECT>
+              </div></span>      
+    </td></tr>
+                    <tr>
+      <td width='30%'><b>Select Expression Level</b></td>
+      <td>
+          <span class="custom-dropdown">
+          <div class="select">
+      <SELECT id="gene_expression" NAME="gene_expression">
+        <option value="" selected="selected">-Select Minimum Expression Level-</option>
+           <option value="('High')" >-High-</option>
+           <option value="('Medium','High')">-Medium-</option>
+           <option value="('Low','Medium','High')">-Low-</option>
+       </SELECT>
+              </div></span>      
+    </td></tr>
+  </table>
+        </fieldset>
+        <br>
+        <fieldset id="humanDatabase">
+          <legend>3. Select Databases</legend>
+<TABLE BORDER=0  width='100%'>
+
+<TR VALIGN='TOP'>
+<TD WIDTH="40%">
+<TABLE  border='0' WIDTH="100%">
+    
+<TR><TD colspan="2"><B>Choose Prediction Algorithms</B></BR></TD></TR>
+<TR><TD ALIGN=center width="20%"><input class="checkboxAll" type="checkbox" name="toolselection" value="9606_pita_no_flank_TOP">   </TD><TD>PITA_TOP</TD></TR>        
+<TR><TD ALIGN=center width="20%"><input class="recommanded" type="checkbox" name="toolselection" value="9606_access_cons_paccmit">   </TD><TD>PACCMIT</TD></TR>
+<TR><TD ALIGN=center width="20%"><input  class="checkboxAll recommanded" type="checkbox" name="toolselection" value="9606_cons_paccmit_cds">   </TD><TD>PACCMIT-CDS</TD></TR>
+<TR><TD ALIGN=center width="20%"><input  class="checkboxAll" type="checkbox" name="toolselection" value="9606_mirna_2_2_1"> </TD><TD>TargetScan_Conserved</TD></TR>
+<TR><TD ALIGN=center width="20%"><input class="checkboxAll" type="checkbox"  name="toolselection" value="9606_P_0.5_eimmo" ></TD><TD>EIMMO_conserved</TD></TR>
+<TR><TD ALIGN=center width="20%"><input type="checkbox"  class="checkboxAll" name="toolselection" value="9606_TG0.7_CDS_microT"></TD><TD>Diana MicroT-CDS</TD></TR>
+<TR><TD ALIGN=center width="20%"><input type="checkbox"  class="checkboxAll" name="toolselection" value="9606_spec_seed_targetspy"></TD><TD>TargetSpy</TD></TR>
+<TR><TD ALIGN=center width="20%"><input type="checkbox"  class="checkboxAll" name="toolselection" value="9606_pictar_most_conserved"></TD><TD>Pictar_Conserved</TD></TR>
+<TR><TD ALIGN=center width="20%"><input type="checkbox"  class="checkboxAll" name="toolselection" value="9606_Conservation_1_targetrank"></TD><TD>TARGETRANK_Conserved</TD></TR>
+<TR><TD ALIGN=center width="20%"><input type="checkbox"  class="checkboxAll" name="toolselection" value="9606_nfe_-15_nm_0.1_reptar"></TD><TD>Reptar_strict</TD></TR>
+<TR><TD ALIGN=center width="20%"><input type="checkbox"  class="checkboxAll" name="toolselection" value="targetminer_9606_targetminer"></TD><TD>TargetMiner</TD></TR>
+<TR><TD ALIGN=center width="20%"><input type="checkbox"  class="checkboxAll" name="toolselection" value="9606_microrna_org_conserved"></TD><TD>microRNA.org</TD></TR>
+<TR><TD ALIGN=center width="20%"><input type="checkbox" class="checkboxAll" name="toolselection" value="9606_mirdb"></TD><TD>miRDB</TD></TR>
+<TR><TD ALIGN=center width="20%"><input type="checkbox" class="checkboxAll"name="toolselection" value="9606_3utr_mirtar"></TD><TD>miRTar</TD></TR>
+<TR><TD ALIGN=center width="20%"><input type="checkbox" class="checkboxAll"name="toolselection" value="9606_microcosm_mirna2target"></TD><TD>microcosm</TD></TR>
+
+
+</TABLE>
+</TD>
+                
+<TD WIDTH="20%">
+<TABLE id="" WIDTH="100%">
+<!--Add selection for different feature here-->
+</TABLE>
+</TD>
+
+<TD WIDTH="40%">
+<TABLE id="" WIDTH="100%">
+
+<TR><TD colspan="2"><B>miRNA Target Evidence Database</B></BR></TD></TR>
+<TR><TD ALIGN=center width="20%"><input type="checkbox" class="recommanded" name="toolselection" value="9606_Evidence_SE_mirtarbase"></TD><TD>mirTarbase/Strong Evidence</TD></TR>
+<TR><TD ALIGN=center width="20%"><input type="checkbox" class="checkboxAll" name="toolselection" value="9606_Evidence_WK_mirtarbase"></TD><TD>mirTarbase/All Evidence</TD></TR>
+<TR><TD ALIGN=center width="20%"><input type="checkbox" class="checkboxAll" name="toolselection" value="9606_tarbase"></TD><TD>Tarbase</TD></TR>
+   <tr><td colspan="2">&nbsp;</td></tr> 
+     <tr><td colspan="2">&nbsp;</td></tr> 
+     <tr> <td  align=center width="20%"><input id="selectall" class="circles" type="checkbox" name="SelectAll" value="SelectAll" ></td><td><b>Select All</b></td></tr>
+     <tr> <td  align=center width="20%"><input id="recommanded" class="circles" type="checkbox" name="recommanded" value="recomanded" ></td><td><b>Recommanded Set</b></td></tr>
+     <tr> <td  align=center width="20%"><input id="minimum" class="circles" type="checkbox" name="minimum" value="minimum"></td><td><b>Minimum Set</b></td></tr>
+     <tr><td colspan="2">&nbsp;</td></tr> 
+     <tr><td colspan="2"><tr><td><b>Minimum Priority Requirement</b><br>by default is 3</td><td><input type="number" name="priority_user" min="1" max="20"></td></tr></td></tr>
+                       
+</TABLE>
+</TABLE>
+    </fieldset> 
+    <br>
+
+<div align=center>
+  <input type='reset' value='Reset'/>
+  <input type='submit' value='GO !'/>
+        </div>
+</form>
+   
+                       </div><!--id pagecontent-->
+
+                </div><!--main-->
+  <footer>
+        		<p> If you have any feedback/suggestions or bugs please contact <a href="mailto:jiali.wang@uni.lu?subject=systecEnqury" style="color:white">jiali.wang@uni.lu</a></p>
+        	</footer>   
+
+         
+        </div><!--page-->
+
+</body>
+</html>
+
